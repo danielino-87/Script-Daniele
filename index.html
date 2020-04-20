@@ -1,0 +1,38 @@
+<!DOCTYPE html><html>
+<body>
+<p id="mappa">Geolocalizzarsi con Google</p>
+<button onclick="geoLocalizzami()">Dove mi trovo?</button>
+<div id="boxmappa"></div>
+<script>
+var m = document.getElementById("mappa");
+function geoLocalizzami() {
+if (navigator.geolocation) {
+navigator.geolocation.getCurrentPosition(mostraPosizione, mostraErrori);
+} else {
+m.innerHTML = "Il tuo browser non supporta la geolocalizzazione.";
+}
+}
+function mostraPosizione(position) {
+var coordinate = position.coords.latitude + "," + position.coords.longitude;
+var path_map = "http://maps.googleapis.com/maps/api/staticmap?center="
++coordinate+"&zoom=18&size=500x400&sensor=false";
+document.getElementById("boxmappa").innerHTML = "<img src='"+path_map+"'>" + "<br />Latitudine: " + position.coords.latitude +
+"<br />Longitudine: " + position.coords.longitude;
+}
+function mostraErrori(error) {
+switch(error.code) {
+case error.PERMISSION_DENIED:
+m.innerHTML = "Permesso negato."
+break;
+case error.POSITION_UNAVAILABLE:
+m.innerHTML = "Posizione non disponibile."
+break;
+case error.TIMEOUT:
+x.innerHTML = "TimeOut."
+break;
+}
+}
+</script>
+</body>
+</html>
+
