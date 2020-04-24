@@ -8,6 +8,29 @@ margin:0 auto
 }
 </style>
 <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+
+
+ 
+<form method="post" name="modulo">
+ <h3>SPUNTARE LA CHECKBOX SE IL PROPRIO PROFILO COINCIDE CON L'INDICAZIONE</h3>
+ <input name="uno" type="checkbox" value="1"> Sei risultato positivo al COVID nell'ultimo mese ?<br>
+ <input name="due" type="checkbox" value="2"> Hai sintomi simil-influenzali ?<br>
+ <input name="tre" type="checkbox" value="3"> Convivi o hai convissuto con malati COVID ?<br>
+ <input name="quattro" type="checkbox" value="4"> Sei risultato positivo COVID al tampone oro-faringeo o al test sierologico ?<br>
+ <input name="cinque" type="checkbox" value="5"> Convivi con persone che hanno dei sintomi riconducibili all'influenza ?<br>
+ <input name="sei" type="checkbox" value="6"> Sei stato in Cina  nell'ultimo mese ?<br>
+ <input name="sette" type="checkbox" value="7"> Sei stato nel nord Italia nell'ultimo mese ?<br>
+ <input type="button" value="Verifica il tuo Rischio di infezione e potenziali Infetti intorno alla tua area"  onClick="Stampa()"/>
+
+</form>     
+
+<head>
+<body onload="init();">
+<h1>Geolocalizzazione</h1>
+<p id="status"></p>
+<h3>Visualizza la tua posizione sulla mappa</h3>
+<div id="my_map"></div>
 <script>
 function init() {
 if(navigator.geolocation) {
@@ -49,9 +72,7 @@ marker= new google.maps.Marker(
 map:map,
 title:"Questa è la tua posizione"});
 }
-
 </script>
-
 <script type="text/javascript">
 function Stampa(){
      // Prelevo dalla pagina solo i blocchi che interessano
@@ -127,25 +148,5 @@ function Stampa(){
 	   document.write("</body></html>");
 }    }   
 </script>
- 
-<form method="post" name="modulo">
- <h3>SPUNTARE LA CHECKBOX SE IL PROPRIO PROFILO COINCIDE CON L'INDICAZIONE</h3>
- <input name="uno" type="checkbox" value="1"> Sei risultato positivo al COVID nell'ultimo mese ?<br>
- <input name="due" type="checkbox" value="2"> Hai sintomi simil-influenzali ?<br>
- <input name="tre" type="checkbox" value="3"> Convivi o hai convissuto con malati COVID ?<br>
- <input name="quattro" type="checkbox" value="4"> Sei risultato positivo COVID al tampone oro-faringeo o al test sierologico ?<br>
- <input name="cinque" type="checkbox" value="5"> Convivi con persone che hanno dei sintomi riconducibili all'influenza ?<br>
- <input name="sei" type="checkbox" value="6"> Sei stato in Cina  nell'ultimo mese ?<br>
- <input name="sette" type="checkbox" value="7"> Sei stato nel nord Italia nell'ultimo mese ?<br>
- <input type="button" value="Verifica il tuo Rischio di infezione e potenziali Infetti intorno alla tua area"  onClick="Stampa()"/>
-
-</form>     
-
-<head>
-<body onload="init();">
-<h1>Geolocalizzazione</h1>
-<p id="status"></p>
-<h3>Visualizza la tua posizione sulla mappa</h3>
-<div id="my_map"></div>
 </body>
 </html>
